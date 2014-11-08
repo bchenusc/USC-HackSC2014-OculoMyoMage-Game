@@ -45,9 +45,9 @@ class OVRShimLoader
 		PlayerSettings.d3d9FullscreenMode = D3D9FullscreenMode.ExclusiveMode;
 		PlayerSettings.visibleInBackground = true;
 #endif
-#if !(UNITY_4_6)
-		PlayerSettings.d3d11ForceExclusiveMode = false; // TODO: Re-enable when DX11 exclusive mode issue in 4.5.5 is fixed
-#endif
+//#if !(UNITY_4_6)
+////		PlayerSettings.d3d11ForceExclusiveMode = false; // TODO: Re-enable when DX11 exclusive mode issue in 4.5.5 is fixed
+//#endif
 	}
 
 	[PreferenceItem("Oculus VR")]
