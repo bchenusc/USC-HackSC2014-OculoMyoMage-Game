@@ -10,10 +10,13 @@ public class ShooterPlayerController : MonoBehaviour {
 
 	public PlayerSounds soundManager;
 
+	public Transform gun;
+
 	// Use this for initialization
 	void Start () {
 		controller = Component.FindObjectOfType<CharacterController>();
 		soundManager = GetComponent<PlayerSounds>();
+		gun = GameObject.Find ("MyoSword").transform;
 	}
 	
 	// Update is called once per frame
@@ -22,11 +25,13 @@ public class ShooterPlayerController : MonoBehaviour {
 		{
 			soundManager.PlaySound(soundManager.crouch);
 			transform.position -= new Vector3(0f, crouchDistance);
+			gun.localPosition += new Vector3(0f, crouchDistance * 1.3f);
 		}
 		else if(Input.GetKeyUp(KeyCode.LeftControl))
 		{
 			soundManager.PlaySound(soundManager.crouch);
 			transform.position += new Vector3(0f, crouchDistance + .5f);
+			gun.localPosition -= new Vector3(0f, crouchDistance * 1.3f);
 		}
 		/*if(controller.velocity.magnitude > 0.1f)
 		{
