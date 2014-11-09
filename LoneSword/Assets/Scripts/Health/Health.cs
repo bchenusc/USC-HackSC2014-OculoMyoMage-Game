@@ -12,7 +12,7 @@ public class Health : MonoBehaviour {
 	{
 		if (damagedByBullets && c.transform.CompareTag("Projectile"))
 		{
-			SingletonObject.Get.getTimer ().RemoveAll ();
+			Destroy(c.gameObject);
 			TakeDamage();
 		}
 	}
@@ -26,6 +26,7 @@ public class Health : MonoBehaviour {
 			{
 				Destroy (gameObject);
 			} else {
+				SingletonObject.Get.getTimer ().RemoveAll ();
 				Application.LoadLevel(0);
 			}
 		}
