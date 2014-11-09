@@ -3,10 +3,13 @@ using System.Collections;
 
 public class TriggerSpawner : MonoBehaviour {
 
+	bool turnOn = true;
+
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.CompareTag("Player"))
+		if (turnOn && other.CompareTag("Player"))
 		{
+			turnOn = false;
 			GetComponentInParent<Spawner>().TriggerActivated();
 		}
 	}

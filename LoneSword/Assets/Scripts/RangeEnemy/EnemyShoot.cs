@@ -15,11 +15,13 @@ public class EnemyShoot : MonoBehaviour {
 	GameObject player;
 
 	public GameObject bulletPrefab;
+	Animation anim;
 
 	// Use this for initialization
 	void Start () {
 		agent = transform.GetComponent<NavMeshAgent> ();
 		player = GameObject.Find ("OVRPlayerController");
+		anim = transform.GetComponent<Animation> ();
 	}
 	
 	// Update is called once per frame
@@ -35,17 +37,17 @@ public class EnemyShoot : MonoBehaviour {
 		else if (state == State.Shoot)
 		{
 			state = State.Shooting;
-			SingletonObject.Get.getTimer().Add(gameObject.GetInstanceID() + "shoot", Shoot, Random.Range (0.6f, 2.0f), true);
+			SingletonObject.Get.getTimer().Add(gameObject.GetInstanceID() + "shoot", Shoot, Random.Range (3f, 5f), true);
 		}
 	}
 
 	void Shoot()
 	{
-		Debug.Log ("hi");
-
-		GameObject clone = Instantiate (bulletPrefab, transform.position + Vector3.forward * 2 + Vector3.up * 5, Quaternion.identity) as GameObject;
-		clone.transform.rotation = Quaternion.LookRotation (player.transform.position);
-		clone.rigidbody.AddForce(Vector3.forward * 3f, ForceMode.Impulse);
+		anim.Play ("attack");
+		GameObject clone = Instantiate (bulletPrefab, transform.position + transform.forward * 2 + Vector3.up * 1.1f, Quaternion.identity) as GameObject;
+		clone.transform.rotation = Quaternion.LookRotation (player.transform.position - transform.position);
+		clone.GetComponent<FireBallTracker> ().player = player.transform;
+		clone.rigidbody.AddForce (transform.forward * Random.Range (0.0f, 3.0f));
 
 	}
 }
