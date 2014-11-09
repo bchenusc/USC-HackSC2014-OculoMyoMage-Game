@@ -54,9 +54,7 @@ public class Health : MonoBehaviour {
 					SingletonObject.Get.getGameState().totalEnemiesKilled++;
 				}
 			} else {
-				SingletonObject.Get.getTimer ().RemoveAll ();
-				SingletonObject.Get.getGameState().totalEnemiesKilled = 0;
-				Application.LoadLevel(0);
+				Component.FindObjectOfType<Fader>().FadeToWhite();
 			}
 		}
 	}

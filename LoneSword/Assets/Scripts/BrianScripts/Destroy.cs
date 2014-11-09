@@ -20,7 +20,7 @@ public class Destroy : MonoBehaviour {
 						Destroy (transform.GetChild(0).gameObject);
 		if (transform.name.Contains("FireBall"))
 			Destroy (transform.GetChild(0).gameObject);
-		GameObject clone = Instantiate (explosionPrefab, transform.position += new Vector3(0f, .5f), Quaternion.identity) as GameObject;
+		GameObject clone = Instantiate (explosionPrefab, transform.position, Quaternion.identity) as GameObject;
 		Destroy (gameObject, GetComponent<ProjectileSounds>().end.length);
 		renderer.enabled = false;
 		GetComponent<ProjectileSounds>().PlaySound(GetComponent<ProjectileSounds>().end);
