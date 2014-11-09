@@ -40,7 +40,7 @@ public class PlayerWeapon : MonoBehaviour {
 			_lastPose = thalmicMyo.pose;
 			
 			// Vibrate the Myo armband when a wave out is made.
-			if (thalmicMyo.pose == Pose.Fist || thalmicMyo.pose == Pose.WaveOut) {
+			if (thalmicMyo.pose == Pose.Fist || thalmicMyo.pose == Pose.WaveOut  || thalmicMyo.pose == Pose.WaveIn) {
 				thalmicMyo.Vibrate (VibrationType.Short);
 				GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as GameObject;
 				newBullet.rigidbody.AddForce(myArm.forward * 500f);
