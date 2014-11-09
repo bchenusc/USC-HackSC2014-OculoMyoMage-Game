@@ -28,7 +28,8 @@ public class Spawner : MonoBehaviour {
 			activeNodes.AddLast(g);
 		}
 
-		int randomSpawnCount = Random.Range (4, nodes.Count);
+		//int randomSpawnCount = Random.Range (4, nodes.Count);
+		int randomSpawnCount = 1;
 
 		for (int i=0; i<randomSpawnCount; i++) {
 			GameObject clone = Instantiate (enemyPrefab, transform.position, Quaternion.identity) as GameObject;

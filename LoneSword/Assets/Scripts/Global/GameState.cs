@@ -42,7 +42,7 @@ public class GameState : Singleton {
 
 		nextWaypoint ++;
 
-		if (nextWaypoint >= 6)
+		if (nextWaypoint >= 5 || nextWaypoint < 0)
 		{
 			nextWaypoint = 0;
 		}
@@ -55,6 +55,12 @@ public class GameState : Singleton {
 		if (!paths)
 		paths = GameObject.Find ("Paths");
 		paths.GetComponent<PlayerWaypoints> ().waypoints [nextWaypoint].collider.enabled = true;
+	}
+
+	public void ResetWaypointNums()
+	{
+		currentWaypoint = -1;
+		nextWaypoint = -1;
 	}
 
 
