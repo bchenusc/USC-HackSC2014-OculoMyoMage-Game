@@ -46,6 +46,12 @@ public class PlayerWeapon : MonoBehaviour {
 				newBullet.rigidbody.AddForce(myArm.forward * 500f);
 			}
 		}
+
+		if(Input.GetKeyDown(KeyCode.Tab))
+		{
+			GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as GameObject;
+			newBullet.rigidbody.AddForce(myArm.forward * 500f);
+		}
 	}
 	
 }
