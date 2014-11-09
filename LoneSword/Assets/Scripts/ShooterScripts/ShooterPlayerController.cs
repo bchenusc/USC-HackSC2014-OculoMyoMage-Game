@@ -25,13 +25,13 @@ public class ShooterPlayerController : MonoBehaviour {
 		{
 			soundManager.PlaySound(soundManager.crouch);
 			transform.position -= new Vector3(0f, crouchDistance);
-			gun.localPosition += new Vector3(0f, crouchDistance * 1.3f);
+			//gun.localPosition += new Vector3(0f, crouchDistance * .5f);
 		}
 		else if(Input.GetKeyUp(KeyCode.LeftControl))
 		{
 			soundManager.PlaySound(soundManager.crouch);
 			transform.position += new Vector3(0f, crouchDistance + .3f);
-			gun.localPosition -= new Vector3(0f, crouchDistance * 1.3f);
+			//gun.localPosition -= new Vector3(0f, crouchDistance * .5f);
 		}
 		/*if(controller.velocity.magnitude > 0.1f)
 		{

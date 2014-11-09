@@ -43,14 +43,14 @@ public class PlayerWeapon : MonoBehaviour {
 			if (thalmicMyo.pose == Pose.Fist || thalmicMyo.pose == Pose.WaveOut  || thalmicMyo.pose == Pose.WaveIn) {
 				thalmicMyo.Vibrate (VibrationType.Short);
 				GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as GameObject;
-				newBullet.rigidbody.AddForce(myArm.forward * 500f);
+				newBullet.rigidbody.AddForce(transform.forward * 500f);
 			}
 		}
 
 		if(Input.GetKeyDown(KeyCode.Tab))
 		{
 			GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity) as GameObject;
-			newBullet.rigidbody.AddForce(myArm.forward * 500f);
+			newBullet.rigidbody.AddForce(transform.forward * 500f);
 		}
 	}
 	
