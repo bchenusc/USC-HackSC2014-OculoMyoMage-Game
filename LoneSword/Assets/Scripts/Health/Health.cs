@@ -5,8 +5,16 @@ public class Health : MonoBehaviour {
 
 	public int HP = 10;
 
+	Animation anim;
+
 	// this is the enemy.
 	public bool damagedByBullets = true;
+
+	void Start()
+	{
+		anim = transform.GetComponent<Animation> ();
+
+	}
 
 	void OnCollisionEnter(Collision c)
 	{
@@ -24,7 +32,8 @@ public class Health : MonoBehaviour {
 		{
 			if (damagedByBullets)
 			{
-				Destroy (gameObject);
+				anim.Play("die");
+				Destroy (gameObject, anim.GetClip("die").length);
 			} else {
 				SingletonObject.Get.getTimer ().RemoveAll ();
 				Application.LoadLevel(0);
