@@ -18,10 +18,15 @@ public class Health : MonoBehaviour {
 
 	void OnCollisionEnter(Collision c)
 	{
-		if (damagedByBullets && c.transform.CompareTag("Projectile"))
+		if (c.transform.CompareTag("Projectile"))
 		{
-			Destroy(c.gameObject);
-			TakeDamage();
+			if(c.gameObject.name.Contains("Fireball") && GetComponent<ShooterPlayerController>()) {
+				TakeDamage();
+				Debug.Log("Player damaged");
+			} else if(c.gameObject.name.Contains("Bullet")) {
+				TakeDamage();
+				Debug.Log("Enemy damaged");
+			}
 		}
 	}
 
@@ -34,10 +39,21 @@ public class Health : MonoBehaviour {
 			{
 				anim.Play("die");
 				Destroy (gameObject, anim.GetClip("die").length);
+				if(GetComponent<SwordsmanSounds>())
+				{
+					SwordsmanSounds sounds = GetComponent<SwordsmanSounds>();
+					sounds.PlaySound(sounds.death);
+				} else if(GetComponent<MageSounds>())
+				{
+					Component.FindObjectOfType<Spawner>().enemies--;
+					MageSounds sounds = GetComponent<MageSounds>();
+					sounds.PlaySound(sounds.death);
+				}
 			} else {
 				SingletonObject.Get.getTimer ().RemoveAll ();
 				Application.LoadLevel(0);
 			}
 		}
 	}
+
 }

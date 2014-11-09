@@ -24,10 +24,11 @@ public class SkeleAnimation : MonoBehaviour {
 			transform.rotation = Quaternion.LookRotation(Vector3.Normalize(new Vector3(player.position.x - transform.position.x,
 			                                                                           transform.position.y, player.position.z - transform.position.z)));
 			Animation anim = transform.GetComponent<Animation>();
-			if (!anim.IsPlaying("attack")){
+			if (!anim.IsPlaying("attack") && !anim.IsPlaying("die")){
 				player.GetComponent<Health>().TakeDamage();
 				anim.Play("attack");
-
+				SwordsmanSounds sounds = GetComponent<SwordsmanSounds>();
+				sounds.PlaySound(sounds.swordClink);
 			}
 
 		} else {
@@ -35,6 +36,9 @@ public class SkeleAnimation : MonoBehaviour {
 			                                                                           transform.position.y, player.position.z - transform.position.z)));
 			agent.SetDestination(new Vector3(player.position.x, transform.position.y, player.position.z));
 			transform.GetComponent<Animation>().Play ("run");
+			SwordsmanSounds sounds = GetComponent<SwordsmanSounds>();
+			sounds.PlaySound(sounds.cackle);
 		}
 	}
+
 }

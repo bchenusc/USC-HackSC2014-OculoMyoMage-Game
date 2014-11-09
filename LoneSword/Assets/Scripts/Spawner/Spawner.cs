@@ -12,7 +12,7 @@ public class Spawner : MonoBehaviour {
 
 	private LinkedList<GameObject> activeNodes = new LinkedList<GameObject>();
 
-	int enemies;
+	public int enemies;
 
 	public void Start()
 	{
@@ -39,6 +39,12 @@ public class Spawner : MonoBehaviour {
 			enemies ++;
 		}
 
+	}
+
+	void Update() {
+		if(enemies <= 0) {
+			Component.FindObjectOfType<TriggerSpawner>().turnOn = true;
+		}
 	}
 }
 

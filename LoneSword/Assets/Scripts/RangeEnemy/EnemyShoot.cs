@@ -6,7 +6,8 @@ public class EnemyShoot : MonoBehaviour {
 	enum State {
 		Move,
 		Shoot,
-		Shooting
+		Shooting,
+		Die
 	}
 
 	NavMeshAgent agent;
@@ -26,6 +27,10 @@ public class EnemyShoot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(anim.IsPlaying("die")) {
+			state = State.Die;
+			return;
+		}
 		if (state == State.Move)
 		{
 			if (Vector3.SqrMagnitude(destination - transform.position) <= 1)
@@ -51,6 +56,9 @@ public class EnemyShoot : MonoBehaviour {
 		clone.GetComponent<FireBallTracker> ().player = player.transform;
 		clone.rigidbody.AddForce (transform.forward * Random.Range (0.0f, 3.0f));
 
+		MageSounds sounds = GetComponent<MageSounds>();
+		sounds.PlaySound(sounds.fireballLaunch);
+		
 	}
 }
 
