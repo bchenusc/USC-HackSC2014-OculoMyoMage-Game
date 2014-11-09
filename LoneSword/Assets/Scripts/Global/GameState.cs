@@ -47,6 +47,7 @@ public class GameState : Singleton {
 			nextWaypoint = 0;
 		}
 
+
 		return paths.GetComponent<PlayerWaypoints> ().waypoints[nextWaypoint].transform;
 	}
 

@@ -36,6 +36,8 @@ public class EnemyShoot : MonoBehaviour {
 			if (Vector3.SqrMagnitude(destination - transform.position) <= 1)
 			{
 				state = State.Shoot;
+				transform.rotation = Quaternion.LookRotation(Vector3.Normalize(new Vector3(player.transform.position.x - transform.position.x,
+				                                                                           transform.position.y, player.transform.position.z - transform.position.z)));
 			}
 			agent.SetDestination(destination);
 		}
