@@ -12,6 +12,7 @@ public class Health : MonoBehaviour {
 	{
 		if (damagedByBullets && c.transform.CompareTag("Projectile"))
 		{
+			SingletonObject.Get.getTimer ().RemoveAll ();
 			TakeDamage();
 		}
 	}

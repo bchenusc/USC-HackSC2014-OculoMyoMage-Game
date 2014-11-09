@@ -18,9 +18,11 @@ public class SkeleAnimation : MonoBehaviour {
 	void Update () {
 		Vector3 direction = player.position - transform.position;
 
-		if (Vector3.SqrMagnitude(direction) < 25)
+		if (Vector3.SqrMagnitude(direction) < 9)
 		{
 			agent.Stop();
+			transform.rotation = Quaternion.LookRotation(Vector3.Normalize(new Vector3(player.position.x - transform.position.x,
+			                                                                           transform.position.y, player.position.z - transform.position.z)));
 			Animation anim = transform.GetComponent<Animation>();
 			if (!anim.IsPlaying("attack")){
 				player.GetComponent<Health>().TakeDamage();

@@ -16,4 +16,5 @@ public class SkeleSpawner : MonoBehaviour {
 	{
 		Instantiate (prefab, transform.position, Quaternion.identity);
 	}
+
 }
