@@ -5,7 +5,10 @@ public class ShooterPlayerController : MonoBehaviour {
 
 	public CharacterController controller;
 
-	public float crouchDistance = 1f;
+	public float crouchDistance = 0.6f;
+	public float crouchScale = 0.5f;
+
+	public int Health = 10;
 
 	// Use this for initialization
 	void Start () {
