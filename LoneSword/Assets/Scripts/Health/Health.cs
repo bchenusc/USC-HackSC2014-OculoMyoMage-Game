@@ -20,7 +20,7 @@ public class Health : MonoBehaviour {
 	{
 		if (c.transform.CompareTag("Projectile"))
 		{
-			if(c.gameObject.name.Contains("Fireball") && GetComponent<ShooterPlayerController>()) {
+			if(c.gameObject.name.Contains("FireBall") && GetComponent<ShooterPlayerController>()) {
 				TakeDamage();
 				Debug.Log("Player damaged");
 			} else if(c.gameObject.name.Contains("Bullet") && !GetComponent<ShooterPlayerController>()) {

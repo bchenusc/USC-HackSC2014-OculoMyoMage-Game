@@ -7,6 +7,7 @@ public class FireBallTracker : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if (rigidbody)
 		rigidbody.AddForce (Vector3.Normalize (player.position - transform.position) * 2);
 	}
 }
