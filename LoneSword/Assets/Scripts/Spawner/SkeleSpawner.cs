@@ -9,7 +9,7 @@ public class SkeleSpawner : MonoBehaviour {
 	void Start()
 	{
 		player = GameObject.Find ("OVRPlayerController").transform;
-		SingletonObject.Get.getTimer ().Add (gameObject.GetInstanceID () + "spawn", Spawn, Random.Range (5.0f, 10.0f), true);
+		SingletonObject.Get.getTimer ().Add (gameObject.GetInstanceID () + "spawn", Spawn, Random.Range (10.0f, 20.0f), true);
 	}
 
 	void Spawn()

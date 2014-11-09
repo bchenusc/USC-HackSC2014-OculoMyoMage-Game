@@ -43,6 +43,8 @@ public class EnemyShoot : MonoBehaviour {
 
 	void Shoot()
 	{
+		if (!anim)
+						return;
 		anim.Play ("attack");
 		GameObject clone = Instantiate (bulletPrefab, transform.position + transform.forward * 2 + Vector3.up * 1.1f, Quaternion.identity) as GameObject;
 		clone.transform.rotation = Quaternion.LookRotation (player.transform.position - transform.position);

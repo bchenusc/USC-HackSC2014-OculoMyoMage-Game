@@ -18,11 +18,12 @@ public class SkeleAnimation : MonoBehaviour {
 	void Update () {
 		Vector3 direction = player.position - transform.position;
 
-		if (Vector3.SqrMagnitude(direction) < 5)
+		if (Vector3.SqrMagnitude(direction) < 25)
 		{
 			agent.Stop();
 			Animation anim = transform.GetComponent<Animation>();
 			if (!anim.IsPlaying("attack")){
+				player.GetComponent<Health>().TakeDamage();
 				anim.Play("attack");
 
 			}
