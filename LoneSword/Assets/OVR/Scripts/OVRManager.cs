@@ -69,7 +69,7 @@ public class OVRManager : MonoBehaviour
 	/// <summary>
 	/// Gets a reference to the active OVRDisplay
 	/// </summary>
-	public static OVRDisplay display { get; private set; }
+	public static OVRDisplay display { get; set; }
 
 	/// <summary>
 	/// Gets a reference to the active OVRTracker
