@@ -5,7 +5,7 @@ public class ShooterPlayerController : MonoBehaviour {
 
 	public CharacterController controller;
 
-	public float crouchDistance = 0.6f;
+	public float crouchDistance = 1.6f;
 	public float crouchScale = 0.5f;
 
 	public PlayerSounds soundManager;
@@ -20,7 +20,7 @@ public class ShooterPlayerController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		if(Input.GetKeyDown(KeyCode.LeftControl))
 		{
 			soundManager.PlaySound(soundManager.crouch);

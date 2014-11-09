@@ -46,8 +46,7 @@ public class GameState : Singleton {
 		{
 			nextWaypoint = 0;
 		}
-
-
+		UpdateToNextWaypoint();
 		return paths.GetComponent<PlayerWaypoints> ().waypoints[nextWaypoint].transform;
 	}
 
@@ -56,6 +55,7 @@ public class GameState : Singleton {
 		if (!paths)
 		paths = GameObject.Find ("Paths");
 		paths.GetComponent<PlayerWaypoints> ().waypoints [nextWaypoint].collider.enabled = true;
+		paths.GetComponent<PlayerWaypoints> ().waypoints [nextWaypoint].GetComponent<WaypointLinker>().waypointTrigger.enabled = true;
 	}
 
 	public void ResetWaypointNums()

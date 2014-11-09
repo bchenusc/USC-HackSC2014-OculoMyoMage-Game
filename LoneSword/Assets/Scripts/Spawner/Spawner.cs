@@ -42,14 +42,14 @@ public class Spawner : MonoBehaviour {
 		for (int i=0; i<spawnCounter; i++) {
 			GameObject clone = Instantiate (enemyPrefab, transform.position, Quaternion.identity) as GameObject;
 			clone.transform.GetComponent<EnemyShoot>().destination = activeNodes.First.Value.transform.position;
-			tempNodes.AddLast(activeNodes.First);
+			tempNodes.AddLast(activeNodes.First.Value);
 			activeNodes.RemoveFirst();
 			SingletonObject.Get.getGameState().CurEnemies++;
 		}
 
 		while (tempNodes.Count > 0)
 		{
-			activeNodes.AddLast(tempNodes.First);
+			activeNodes.AddLast(tempNodes.First.Value);
 			tempNodes.RemoveFirst();
 		}
 
