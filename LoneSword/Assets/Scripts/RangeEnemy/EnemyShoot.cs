@@ -40,6 +40,7 @@ public class EnemyShoot : MonoBehaviour {
 				                                                                           transform.position.y, player.transform.position.z - transform.position.z)));
 			}
 			agent.SetDestination(destination);
+			anim.Play("run");
 		}
 		else if (state == State.Shoot)
 		{
