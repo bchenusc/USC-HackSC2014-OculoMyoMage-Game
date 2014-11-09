@@ -45,7 +45,7 @@ public class Health : MonoBehaviour {
 					sounds.PlaySound(sounds.death);
 				} else if(GetComponent<MageSounds>())
 				{
-					Component.FindObjectOfType<Spawner>().enemies--;
+					SingletonObject.Get.getGameState().CurEnemies-=1;
 					MageSounds sounds = GetComponent<MageSounds>();
 					sounds.PlaySound(sounds.death);
 				}

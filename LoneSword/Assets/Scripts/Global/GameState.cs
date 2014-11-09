@@ -11,7 +11,51 @@ using System.Collections.Generic;
 
 
 public class GameState : Singleton {
+	
 
+	private int currentEnemies = 0;
+	public int CurEnemies {
+		set {
+			currentEnemies = value;
+			if (currentEnemies <= 0)
+			{
+				// Move on to the next area.
+				GameObject.FindWithTag("Player").GetComponent<FollowWaypoint>().MoveToNextWaypoint();
+			}
+		}
+		get{return currentEnemies;}
+	}
+	public int maxEnemiesInRound = 0;
+
+	private int currentWaypoint = -1;
+
+	private int nextWaypoint = -1;
+
+	GameObject paths;
+
+
+	public Transform NextWaypoint()
+	{
+
+		if (!paths)
+		paths = GameObject.Find ("Paths");
+
+		nextWaypoint ++;
+
+		if (nextWaypoint >= 6)
+		{
+			nextWaypoint = 0;
+		}
+
+		return paths.GetComponent<PlayerWaypoints> ().waypoints[nextWaypoint].transform;
+	}
+
+	public void UpdateToNextWaypoint()
+	{
+		if (!paths)
+		paths = GameObject.Find ("Paths");
+		paths.GetComponent<PlayerWaypoints> ().waypoints [nextWaypoint].collider.enabled = true;
+	}
 
 
 #region Inherited functions

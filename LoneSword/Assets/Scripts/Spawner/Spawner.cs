@@ -12,8 +12,6 @@ public class Spawner : MonoBehaviour {
 
 	private LinkedList<GameObject> activeNodes = new LinkedList<GameObject>();
 
-	public int enemies;
-
 	public void Start()
 	{
 		foreach (Transform child in transform)
@@ -36,15 +34,9 @@ public class Spawner : MonoBehaviour {
 			GameObject clone = Instantiate (enemyPrefab, transform.position, Quaternion.identity) as GameObject;
 			clone.transform.GetComponent<EnemyShoot>().destination = activeNodes.First.Value.transform.position;
 			activeNodes.RemoveFirst();
-			enemies ++;
+			SingletonObject.Get.getGameState().CurEnemies++;
 		}
 
-	}
-
-	void Update() {
-		if(enemies <= 0) {
-			Component.FindObjectOfType<TriggerSpawner>().turnOn = true;
-		}
 	}
 }
 
