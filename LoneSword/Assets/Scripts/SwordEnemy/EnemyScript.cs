@@ -9,9 +9,10 @@ public class EnemyScript : MonoBehaviour {
 	float atkTimer;
 	float maxAtkTimer = 1.0f;
 
-	enum EnemyState{
+	public enum EnemyState{
 		Move,
-		Attack
+		Attack,
+		Die
 	}
 
 	EnemyState state = EnemyState.Move;

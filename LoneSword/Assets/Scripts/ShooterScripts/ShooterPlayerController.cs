@@ -5,12 +5,15 @@ public class ShooterPlayerController : MonoBehaviour {
 
 	public CharacterController controller;
 
-	public float crouchDistance = 1.6f;
+	public float crouchDistance = 0.3f;
 	public float crouchScale = 0.5f;
 
 	public PlayerSounds soundManager;
 
 	public Transform gun;
+
+	bool canCrouch = true;
+	bool crouched = false;
 
 	// Use this for initialization
 	void Start () {
@@ -21,16 +24,20 @@ public class ShooterPlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		if(Input.GetKeyDown(KeyCode.LeftControl))
+		if(Input.GetKeyDown(KeyCode.LeftControl) && canCrouch)
 		{
 			soundManager.PlaySound(soundManager.crouch);
-			transform.position -= new Vector3(0f, crouchDistance);
+			transform.position = new Vector3(transform.position.x, 0f, transform.position.z);
+			crouched = true;
 			//gun.localPosition += new Vector3(0f, crouchDistance * .5f);
 		}
-		else if(Input.GetKeyUp(KeyCode.LeftControl))
+		else if(Input.GetKeyUp(KeyCode.LeftControl) && canCrouch && crouched)
 		{
+			crouched  = false;
 			soundManager.PlaySound(soundManager.crouch);
-			transform.position += new Vector3(0f, crouchDistance + .3f);
+			transform.position += new Vector3(0f, crouchDistance + 2.0f);
+			canCrouch = false;
+			SingletonObject.Get.getTimer().Add("EnableCrouch", enableCrouch, 0.10f, false);
 			//gun.localPosition -= new Vector3(0f, crouchDistance * .5f);
 		}
 		/*if(controller.velocity.magnitude > 0.1f)
@@ -39,5 +46,9 @@ public class ShooterPlayerController : MonoBehaviour {
 		} else {
 			soundManager.StopSound(soundManager.footsteps);
 		}*/
+	}
+
+	void enableCrouch() {
+		canCrouch = true;
 	}
 }

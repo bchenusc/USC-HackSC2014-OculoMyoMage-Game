@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemyShoot : MonoBehaviour {
 
-	enum State {
+	public enum State {
 		Move,
 		Shoot,
 		Shooting,
@@ -12,7 +12,7 @@ public class EnemyShoot : MonoBehaviour {
 
 	NavMeshAgent agent;
 	public Vector3 destination;
-	State state = State.Move;
+	public State state = State.Move;
 	GameObject player;
 
 	public GameObject bulletPrefab;

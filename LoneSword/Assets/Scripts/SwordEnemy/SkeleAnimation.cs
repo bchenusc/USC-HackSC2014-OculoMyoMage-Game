@@ -8,6 +8,14 @@ public class SkeleAnimation : MonoBehaviour {
 
 	NavMeshAgent agent;
 
+	public enum SwordState{
+		Move,
+		Attack,
+		Die
+	}
+
+	public SwordState state = SwordState.Move;
+
 	void Start()
 	{
 		player = GameObject.Find ("OVRPlayerController").transform;
@@ -16,6 +24,9 @@ public class SkeleAnimation : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if(state == SwordState.Die) {
+			return;
+		}
 		Vector3 direction = player.position - transform.position;
 
 		if (Vector3.SqrMagnitude(direction) < 9)

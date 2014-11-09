@@ -25,7 +25,7 @@ public class FollowWaypoint : MonoBehaviour {
 	{
 		if (Moving)
 		{
-			if (Vector3.Distance(nextWayPoint.position, transform.position) < .1f)
+			if (Vector3.Distance(nextWayPoint.position, transform.position) < 1f)
 			{
 				Debug.Log ("hello");
 				Moving = false;

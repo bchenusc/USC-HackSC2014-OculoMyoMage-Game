@@ -43,14 +43,19 @@ public class Health : MonoBehaviour {
 				{
 					SwordsmanSounds sounds = GetComponent<SwordsmanSounds>();
 					sounds.PlaySound(sounds.death);
+					GetComponent<SkeleAnimation>().state = SkeleAnimation.SwordState.Die;
+					SingletonObject.Get.getGameState().totalEnemiesKilled++;
 				} else if(GetComponent<MageSounds>())
 				{
 					SingletonObject.Get.getGameState().CurEnemies-=1;
 					MageSounds sounds = GetComponent<MageSounds>();
 					sounds.PlaySound(sounds.death);
+					GetComponent<EnemyShoot>().state = EnemyShoot.State.Die;
+					SingletonObject.Get.getGameState().totalEnemiesKilled++;
 				}
 			} else {
 				SingletonObject.Get.getTimer ().RemoveAll ();
+				SingletonObject.Get.getGameState().totalEnemiesKilled = 0;
 				Application.LoadLevel(0);
 			}
 		}

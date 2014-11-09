@@ -33,6 +33,7 @@ public class GameState : Singleton {
 
 	GameObject paths;
 
+	public int totalEnemiesKilled = 0;
 
 	public Transform NextWaypoint()
 	{
