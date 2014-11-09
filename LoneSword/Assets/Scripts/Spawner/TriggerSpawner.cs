@@ -13,13 +13,4 @@ public class TriggerSpawner : MonoBehaviour {
 			GetComponentInParent<Spawner>().TriggerActivated();
 		}
 	}
-
-	void OnTriggerStay(Collider other)
-	{
-		if (turnOn && other.CompareTag("Player"))
-		{
-			turnOn = false;
-			GetComponentInParent<Spawner>().TriggerActivated();
-		}
-	}
 }

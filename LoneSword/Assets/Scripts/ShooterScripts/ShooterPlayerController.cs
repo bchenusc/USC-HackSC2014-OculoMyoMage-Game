@@ -30,7 +30,7 @@ public class ShooterPlayerController : MonoBehaviour {
 		else if(Input.GetKeyUp(KeyCode.LeftControl))
 		{
 			soundManager.PlaySound(soundManager.crouch);
-			transform.position += new Vector3(0f, crouchDistance + .5f);
+			transform.position += new Vector3(0f, crouchDistance + .3f);
 			gun.localPosition -= new Vector3(0f, crouchDistance * 1.3f);
 		}
 		/*if(controller.velocity.magnitude > 0.1f)
